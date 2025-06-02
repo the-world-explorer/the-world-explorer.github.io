@@ -150,7 +150,7 @@
                     type="video/mp4">
           </video>
           <h2 class="subtitle has-text-centered" style="margin-bottom: 20px;">
-            apartment of an elegant French country estate with limestone facade and lavender gardens" 
+            apartment of an elegant French country estate with limestone facade and lavender gardens
           </h2>
         </div>
         <div class="item">
@@ -248,28 +248,45 @@
     </div>
     <!--/ Paper video. -->
 
-    <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-            <h2 class="title is-3">Three-Stage Scene Generation</h2>
-            <div class="content has-text-justified">
+<div class="columns is-centered has-text-centered">
+    <div class="column is-four-fifths">
+        <h2 class="title is-3">Three-Stage Scene Generation</h2>
+        <div class="content has-text-justified">
             <p>
-                We generate a fully navigable 3D scene from text input in three stages
-                <strong>Left:</strong> we create four initial images with a T2I model, and we define that they look outwards, distributed uniformly around the scene center (without overlap).
+                We generate a fully navigable 3D scene from text input in three stages.
+            </p>
+
+            <p>
+                First, we create four initial images with a T2I model, and we define that they look outwards, distributed uniformly around the scene center (without overlap).
                 We leverage monocular depth estimators and inpainting to create the remaining four images of our scene scaffold.
-                <strong>Mid:</strong> we propose a novel iterative video trajectory generation pipeline. 
+            </p>
+            <p class="has-text-centered">
+                <img src="static/images/pipeline_1.jpg" alt="WorldExplorer panorama initialization" style="display: inline-block; max-width: 100%;">
+            </p>
+
+            <p>
+                Next, we propose a novel iterative video trajectory generation pipeline. 
                 It exploits camera-guided video diffusion models to generate additional images of the scene along pre-defined trajectories.
                 For each video generation, we select optimal conditioning views from all previously generated frames, which encourages 3D-consistent content generation.
                 We further discard frames (marked as grey), that are too close to (running into) objects to avoid degenerate outputs.
                 We repeat this trajectory generation multiple times to obtain a final set of posed images. 
-                <strong>Right:</strong> we optimize a 3D Gaussian-Splatting scene from our generated images.
+            </p>
+            <p class="has-text-centered">
+                <img src="static/images/pipeline_2.jpg" alt="WorldExplorer iterative video trajectory generation" style="display: inline-block; max-width: 100%;">
+            </p>
+
+            <p>
+                Finally, we optimize a 3D Gaussian-Splatting scene from our generated images.
                 To this end, we first obtain a point-cloud initialization using VGGT.
                 Then we globally align the predicted points with our camera poses using rigid transformations.
                 Finally, we can explore the scene, i.e., synthesize novel views from perspectives beyond the scene center, in real-time using standard computer graphics rasterization.
             </p>
-            <img src="static/images/pipeline.jpg" alt="WorldExplorer Three-Stage Scene Generation">
-            </div>
+            <p class="has-text-centered">
+                <img src="static/images/pipeline_3.jpg" alt="WorldExplorer 3D scene optimization" style="display: inline-block; max-width: 100%;">
+            </p>
         </div>
     </div>
+</div>
 
     <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
