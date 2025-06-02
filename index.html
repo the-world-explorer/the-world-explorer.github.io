@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="WorldExplorer: Towards Generating Fully Navigable 3D Scenes">
+  <meta name="keywords" content="WorldExplorer, scene generation, 3D Generation, Diffusion Models, video diffusion, neural rendering">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WorldExplorer: Towards Generating Fully Navigable 3D Scenes</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">WorldExplorer: Towards Generating Fully Navigable 3D Scenes</h1>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              Anonymous Authors
+            </span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link (Original) -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark" disabled>
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- arXiv Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://youtu.be/c1lBnwJWNmE"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark" disabled>
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="static/images/teaser.jpg" alt="WorldExplorer Teaser">
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf">WorldExplorer</span> generates 3D scenes from a given text prompt using camera-guided video diffusion models.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item">
+          <video autoplay controls muted loop height="100%">
+            <source src="static/images/teaser_animated_with_splats.mp4"
+                    type="video/mp4">
+          </video>
+          <h2 class="subtitle has-text-centered" style="margin-bottom: 20px;">
+            apartment of a bioluminescent, gravity-defying, telepathic cosmic jellyfish hive
+          </h2>
+        </div>
+        <div class="item">
+          <video autoplay controls muted loop height="100%">
+            <source src="static/images/french.mp4"
+                    type="video/mp4">
+          </video>
+          <h2 class="subtitle has-text-centered" style="margin-bottom: 20px;">
+            apartment of an elegant French country estate with limestone facade and lavender gardens" 
+          </h2>
+        </div>
+        <div class="item">
+          <video autoplay controls muted loop height="100%">
+            <source src="static/images/bubblegum.mp4"
+                    type="video/mp4">
+          </video>
+          <h2 class="subtitle has-text-centered" style="margin-bottom: 20px;">
+            apartment of a stretchy, sugar-scented, pop-art bubble gum coral reef
+          </h2>
+        </div>
+        <div class="item">
+          <video autoplay controls muted loop height="100%">
+            <source src="static/images/hamptons.mp4"
+                    type="video/mp4">
+          </video>
+          <h2 class="subtitle has-text-centered" style="margin-bottom: 20px;">
+            apartment of an airy Hamptons beach house with white shiplap and coastal blue accents
+          </h2>
+        </div>
+        <div class="item">
+          <video autoplay controls muted loop height="100%">
+            <source src="static/images/liquid.mp4"
+                    type="video/mp4">
+          </video>
+          <h2 class="subtitle has-text-centered" style="margin-bottom: 20px;">
+            apartment of a flowing, reflective, chime-filled liquid metal monastery
+          </h2>
+        </div>
+        <div class="item">
+          <video autoplay controls muted loop height="100%">
+            <source src="static/images/oasis.mp4"
+                    type="video/mp4">
+          </video>
+          <h2 class="subtitle has-text-centered" style="margin-bottom: 20px;">
+            lush desert oasis with palm trees and clear pools surrounded by sand dunes
+          </h2>
+        </div>
+        <div class="item">
+          <video autoplay controls muted loop height="100%">
+            <source src="static/images/honeycomb.mp4"
+                    type="video/mp4">
+          </video>
+          <h2 class="subtitle has-text-centered" style="margin-bottom: 20px;">
+            apartment of a hexagonal, amber-glowing, bee-tended honeycomb observatory
+          </h2>
+        </div>
+        <div class="item">
+          <video autoplay controls muted loop height="100%">
+            <source src="static/images/industrial.mp4"
+                    type="video/mp4">
+          </video>
+          <h2 class="subtitle has-text-centered" style="margin-bottom: 20px;">
+            apartment of an urban industrial loft with exposed brick and ductwork
+          </h2>
+        </div>
+        <div class="item">
+          <video autoplay controls muted loop height="100%">
+            <source src="static/images/crystal.mp4"
+                    type="video/mp4">
+          </video>
+          <h2 class="subtitle has-text-centered" style="margin-bottom: 20px;">
+            apartment of a resonating, transparent, melodic crystal music forest
+          </h2>
+        </div>
+        <div class="item">
+          <video autoplay controls muted loop height="100%">
+            <source src="static/images/gothic.mp4"
+                    type="video/mp4">
+          </video>
+          <h2 class="subtitle has-text-centered" style="margin-bottom: 20px;">
+            apartment of an elegant Gothic Revival mansion with ornate details and dark woods
+          </h2>
+        </div>
+                <div class="item">
+          <video autoplay controls muted loop height="100%">
+            <source src="static/images/celestial.mp4"
+                    type="video/mp4">
+          </video>
+          <h2 class="subtitle has-text-centered" style="margin-bottom: 20px;">
+            apartment of a star-written, constellation-binding, midnight celestial ink library
+          </h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Generating 3D worlds from text is a highly anticipated goal in computer vision.
+            Existing works are limited by the degree of exploration they allow inside of a scene, i.e., produce streched-out and noisy artifacts when moving beyond central or panoramic perspectives.
+            To this end, we propose WorldExplorer, a novel method based on autoregressive video trajectory generation, which builds fully navigable 3D scenes with consistent visual quality across a wide range of viewpoints.
+            We initialize our scenes by creating multi-view consistent images corresponding to a 360 degree panorama.
+            Then, we expand it by leveraging video diffusion models in an iterative scene generation pipeline.
+            Concretely, we generate multiple videos along short, pre-defined trajectories, that explore the scene in depth, including motion around objects.
+            Our novel scene memory conditions each video on the most relevant prior views, while a collision-detection mechanism prevents degenerate results, like moving into objects.
+            Finally, we fuse all generated views into a unified 3D representation via 3D Gaussian Splatting optimization.
+            Compared to prior approaches, WorldExplorer produces high-quality scenes that remain stable under large camera motion, enabling for the first time realistic and unrestricted exploration.
+            We believe this marks a significant step toward generating immersive and truly explorable virtual 3D environments.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/c1lBnwJWNmE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+    <!--/ Paper video. -->
+
+    <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+            <h2 class="title is-3">Three-Stage Scene Generation</h2>
+            <div class="content has-text-justified">
+            <p>
+                We generate a fully navigable 3D scene from text input in three stages
+                <strong>Left:</strong> we create four initial images with a T2I model, and we define that they look outwards, distributed uniformly around the scene center (without overlap).
+                We leverage monocular depth estimators and inpainting to create the remaining four images of our scene scaffold.
+                <strong>Mid:</strong> we propose a novel iterative video trajectory generation pipeline. 
+                It exploits camera-guided video diffusion models to generate additional images of the scene along pre-defined trajectories.
+                For each video generation, we select optimal conditioning views from all previously generated frames, which encourages 3D-consistent content generation.
+                We further discard frames (marked as grey), that are too close to (running into) objects to avoid degenerate outputs.
+                We repeat this trajectory generation multiple times to obtain a final set of posed images. 
+                <strong>Right:</strong> we optimize a 3D Gaussian-Splatting scene from our generated images.
+                To this end, we first obtain a point-cloud initialization using VGGT.
+                Then we globally align the predicted points with our camera poses using rigid transformations.
+                Finally, we can explore the scene, i.e., synthesize novel views from perspectives beyond the scene center, in real-time using standard computer graphics rasterization.
+            </p>
+            <img src="static/images/pipeline.jpg" alt="WorldExplorer Three-Stage Scene Generation">
+            </div>
+        </div>
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+            <h2 class="title is-3">Conditional video generation via scene memory</h2>
+            <div class="content has-text-justified">
+            <p>
+                We generate videos in multiple batches of 21 frames along 4 trajectories (blue, purple, red, orange).
+                These trajectories start from each of our initial panoramic images (bottom left).
+                To ensure 3D-consistent outputs, we prefill the first 8 frames with our initial scene scaffold (marked in green).
+                The remaining 5 are sampled based on rotational similarity from our scene memory, which stores the images and poses of all previously generated frames (top).
+                After each trajectory is generated, we append all frames starting from the third image to our scene memory for conditioning of later frames.
+            </p>
+            <img src="static/images/scene_memory.jpg" alt="WorldExplorer Scene Memory">
+            </div>
+        </div>
+    </div>
+
+  </div>
+
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            Website source code borrowed from <a
+              href="https://github.com/nerfies/nerfies.github.io">here</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
